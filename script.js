@@ -13,7 +13,7 @@ function createSnowflake() {
   snowflake.classList.add("snowflake");
 
   // Randomize size and position
-  const size = Math.random() * 5 + 2 + "px";
+  const size = Math.random() * 7 + 3 + "px"; // Increased size range for variety
   const left = Math.random() * window.innerWidth + "px";
 
   snowflake.style.width = size;
@@ -21,8 +21,8 @@ function createSnowflake() {
   snowflake.style.left = left;
 
   // Randomize animation duration and delay
-  const animationDuration = Math.random() * 3 + 2 + "s";
-  const animationDelay = Math.random() * 5 + "s";
+  const animationDuration = Math.random() * 4 + 2 + "s"; // Slightly longer duration for variety
+  const animationDelay = Math.random() * 3 + "s";
 
   snowflake.style.animationDuration = animationDuration;
   snowflake.style.animationDelay = animationDelay;
@@ -32,11 +32,11 @@ function createSnowflake() {
   // Remove the snowflake after it falls out of view
   setTimeout(() => {
     snowflake.remove();
-  }, parseInt(animationDuration) * 1000);
+  }, (parseFloat(animationDuration) + parseFloat(animationDelay)) * 1000);
 }
 
 // Generate snowflakes continuously
-setInterval(createSnowflake, 100);
+setInterval(createSnowflake, 100); // Increased frequency for more snowflakes
 
 // FAQ Toggle
 document.querySelectorAll(".faq-question").forEach((button) => {
