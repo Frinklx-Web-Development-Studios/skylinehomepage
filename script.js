@@ -13,7 +13,7 @@ function createSnowflake() {
   snowflake.classList.add("snowflake");
 
   // Randomize size and position
-  const size = Math.random() * 7 + 3 + "px"; // Increased size range for variety
+  const size = Math.random() * 7 + 3 + "px";
   const left = Math.random() * window.innerWidth + "px";
 
   snowflake.style.width = size;
@@ -21,7 +21,7 @@ function createSnowflake() {
   snowflake.style.left = left;
 
   // Randomize animation duration and delay
-  const animationDuration = Math.random() * 4 + 2 + "s"; // Slightly longer duration for variety
+  const animationDuration = Math.random() * 4 + 2 + "s";
   const animationDelay = Math.random() * 3 + "s";
 
   snowflake.style.animationDuration = animationDuration;
@@ -29,16 +29,13 @@ function createSnowflake() {
 
   snowContainer.appendChild(snowflake);
 
-  // Remove the snowflake after it falls out of view
   setTimeout(() => {
     snowflake.remove();
   }, (parseFloat(animationDuration) + parseFloat(animationDelay)) * 1000);
 }
 
-// Generate snowflakes continuously
-setInterval(createSnowflake, 100); // Increased frequency for more snowflakes
+setInterval(createSnowflake, 100);
 
-// FAQ Toggle
 document.querySelectorAll(".faq-question").forEach((button) => {
   button.addEventListener("click", () => {
     const answer = button.nextElementSibling;
@@ -54,11 +51,9 @@ document.querySelectorAll(".faq-question").forEach((button) => {
   });
 });
 
-// Celebration Popup Logic
 const popup = document.getElementById("celebration-popup");
 const closePopup = document.getElementById("close-popup");
 
-// Check localStorage for last visit
 const lastVisit = localStorage.getItem("lastVisit");
 const now = new Date().getTime();
 const oneDay = 24 * 60 * 60 * 1000;
@@ -72,7 +67,6 @@ closePopup.addEventListener("click", () => {
   popup.classList.remove("active");
 });
 
-// FAQ Toggle Logic
 document.querySelectorAll(".faq-header").forEach((header) => {
   header.addEventListener("click", () => {
     const card = header.parentElement;
