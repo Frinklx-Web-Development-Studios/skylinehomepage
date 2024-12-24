@@ -37,3 +37,47 @@ function createSnowflake() {
 
 // Generate snowflakes continuously
 setInterval(createSnowflake, 100);
+
+// FAQ Toggle
+document.querySelectorAll(".faq-question").forEach((button) => {
+  button.addEventListener("click", () => {
+    const answer = button.nextElementSibling;
+    const toggle = button.querySelector(".faq-toggle");
+
+    if (answer.style.display === "block") {
+      answer.style.display = "none";
+      toggle.textContent = "+";
+    } else {
+      answer.style.display = "block";
+      toggle.textContent = "-";
+    }
+  });
+});
+
+// Celebration Popup Logic
+const popup = document.getElementById("celebration-popup");
+const closePopup = document.getElementById("close-popup");
+
+// Check localStorage for last visit
+const lastVisit = localStorage.getItem("lastVisit");
+const now = new Date().getTime();
+const oneDay = 24 * 60 * 60 * 1000;
+
+if (!lastVisit || now - lastVisit > oneDay) {
+  popup.classList.add("active");
+  localStorage.setItem("lastVisit", now);
+}
+
+closePopup.addEventListener("click", () => {
+  popup.classList.remove("active");
+});
+
+// FAQ Toggle Logic
+document.querySelectorAll(".faq-header").forEach((header) => {
+  header.addEventListener("click", () => {
+    const card = header.parentElement;
+    card.classList.toggle("active");
+    const toggle = header.querySelector(".faq-toggle");
+    toggle.textContent = toggle.textContent === "+" ? "−" : "+";
+  });
+});
